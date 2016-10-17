@@ -1,0 +1,144 @@
+// VARIABLES
+
+@auto-breakpoint-width                  : 1800px;
+@auto-breakpoint-height                 :  900px;
+
+@theme-layoutmode                       : ~'theme-@{ui-theme-name}-layoutmode';
+
+// DEFAULT
+html {
+    font-size                           : @font-size;
+    }
+
+// LARGE SCREEN
+@media (min-width: 2500px) {
+    }
+
+// MEDIUM SCREEN
+@media (min-width: @auto-breakpoint-width) {
+    }
+
+// COMPACT MODE
+.compact-mode() {
+    atom-workspace {
+        padding-right                   : 0;
+        atom-panel-container.left:empty {
+            padding-left                : 0;
+            }
+        }
+
+    atom-pane-container {
+        padding-top                     : 0;
+        border-left                     : 1px solid @base-border-color;
+
+        atom-pane {
+            border-right                : 1px solid @base-border-color;
+            border-bottom               : 1px solid @base-border-color;
+            .item-views {
+                border                  : none;
+                }
+            }
+
+        atom-pane-resize-handle.horizontal.horizontal {
+            width                       : initial;
+            &:before {
+                width                   : 8px;
+                left                    : -4px;
+                }
+            }
+        atom-pane-resize-handle.vertical.vertical {
+            height                      : initial;
+            &:before {
+                height                  : 8px;
+                top                     : -4px;
+                }
+            }
+        }
+
+    atom-panel-container {
+        &.left,
+        &.right {
+            min-width                   : 0;
+            }
+        }
+
+    .tab-bar {
+        .tab {
+            border-radius               : 0;
+            }
+        .tab::before {
+            border-radius               : 0;
+            top                         : 0;
+            bottom                      : 0;
+
+            .theme-one-dark-ui & {
+                left                    : 1px;
+                }
+            }
+
+        .tab:first-of-type::before {
+            left                        : 0;
+            }
+        .tab::after {
+            border-top                  : none;
+            border-radius               : 0;
+            background-image            : none;
+            box-shadow                  : inset 0 1px 0 hsla(0,0%,100,.04);
+            }
+        .tab:first-of-type::after {
+            border-left                 : none;
+            }
+        .tab:last-of-type::after {
+            border-right                : none;
+            box-shadow                  : inset 0 1px 0 hsla(0,0%,100,.04), 1px 0 0 @base-border-color;
+            }
+        }
+
+    // tree-view
+    .tree-view::before {
+        margin-top                      : 0;
+        }
+
+    .tree-view .project-root.project-root {
+        padding-top                     : 0;
+        &:before {
+            height                      : @ui-tab-height;
+            }
+        }
+    .theme-one-dark-ui .tree-view .project-root.project-root::before {
+        border-top                      : none;
+        }
+    }
+
+[@{theme-layoutmode}="compact"] {
+    .compact-mode();
+    }
+
+@media (max-width: @auto-breakpoint-width), (max-height: @auto-breakpoint-height) {
+    [@{theme-layoutmode}="auto"] {
+        .compact-mode();
+        }
+    }
+
+// SMALL TABS MODE
+
+@theme-tabsizing: ~'theme-@{ui-theme-name}-tabsizing';
+
+[@{theme-tabsizing}="minimum"] {
+    .minimum-width-tabs();
+    }
+
+@media (max-width: @auto-breakpoint-width) {
+    [@{theme-tabsizing}="auto"] {
+        .minimum-width-tabs();
+        }
+    }
+
+.minimum-width-tabs() {
+    // auto-size tabs
+    .tab-bar .tab,
+    .tab-bar .tab.active {
+        flex                            : 0 0 auto;
+        min-width                       : @ui-tab-height;
+        }
+    }

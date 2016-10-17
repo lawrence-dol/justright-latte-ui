@@ -1,0 +1,25 @@
+.status-added    { color: @text-color-success !important; } // green
+.status-ignored  { color: @text-color-subtle !important;  } // faded
+.status-modified { color: @text-color-error !important;   } // red
+.status-removed  { color: @text-color-warning !important; } // orange
+.status-renamed  { color: @text-color-info !important;    } // blue
+
+.tab-bar .status-added    { color: inherit !important; } // green
+.tab-bar .status-ignored  { color: inherit !important; } // faded
+.tab-bar .status-modified { color: inherit !important; } // orange
+.tab-bar .status-removed  { color: inherit !important; } // red
+.tab-bar .status-renamed  { color: inherit !important; } // blue
+
+.tree-view .entry.directory .header                           { color: @text-color-warning !important; }
+.tree-view .entry.directory .header            > span::before { color: @text-color-warning !important; }
+.tree-view .entry.file                                        { color: @text-color !important;         }
+.tree-view .entry.file                         > span::before { color: @text-color !important;         }
+
+.tree-view .selected.entry.directory > .header                { color: @text-color-highlight !important; }
+.tree-view .selected.entry.file                               { color: @text-color-highlight !important; }
+
+.tree-view .file.entry.status-added            > span::before { color: @text-color-success !important; }
+.tree-view .file.entry.status-ignored          > span::before { color: @text-color-subtle !important;  }
+.tree-view .file.entry.status-modified         > span::before { color: @text-color-error !important;   }
+.tree-view .file.entry.status-removed          > span::before { color: @text-color-warning !important; }
+.tree-view .file.entry.status-renamed          > span::before { color: @text-color-info !important;    }
