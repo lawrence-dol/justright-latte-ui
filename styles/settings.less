@@ -43,7 +43,6 @@
         }
 
     // SECTIONS
-
     & > .panels {
         background-color                : @level-3-color;
         }
@@ -52,7 +51,17 @@
         max-width                       : @ui-size*60;
         }
     .sub-section {
-        margin                          : @ui-padding*3 0;
+        margin                          : @ui-padding 0;
+
+        .sub-section-heading {
+            color                       : @text-color-highlight;
+            background-color            : transparent;
+            }
+
+        .sub-section-heading.icon:before,
+        .section-heading.icon:before {
+            margin-right                : @ui-padding-icon;
+            }
         }
 
     .section,
@@ -71,14 +80,10 @@
         margin-bottom                   : @ui-padding/1.5;
         }
 
-    .sub-section-heading.icon:before,
-    .section-heading.icon:before {
-        margin-right                    : @ui-padding-icon;
-        }
-
     // CARDS
 
     .package-card {
+        border                          : 1px solid @text-color;
         padding                         : @ui-padding;
         .meta-controls .status-indicator {
             width                       : @ui-padding/4;
